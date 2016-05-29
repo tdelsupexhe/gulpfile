@@ -117,6 +117,26 @@ gulp.task('scripts', function() {
 });
 
 /*
+ * Tâche Browserify
+ * Commande : "gulp browserify"
+ * Description : Quand vous incluez des modules dans un fichier main.js sans utiliser node comme server, 
+ * vous aurez besoin de requireJS ou browserify afin que votre navigateur comprenne ces inclusions...
+ * Cette tâche va interpretter ces inclusions et les traduires pour le navigateur.
+ * 
+ * Généralement, cette tâche est executée avant de minifier!
+ *
+ */
+gulp.task('browserify', function() {
+    // Single entry point to browserify
+    gulp.src('js/main.js')
+        .pipe(browserify({
+            insertGlobals: true,
+            debug: !gulp.env.production
+        }))
+        .pipe(gulp.dest('js/build'))
+});
+
+/*
  * Tâche watch
  * Commande : "gulp watch"
  * Description : Vérifie si un fichier est modifié et si c'est le cas, exécute les tâches placées dans le tableau
