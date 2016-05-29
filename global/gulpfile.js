@@ -39,7 +39,10 @@ gulp.task('less', function() {
         .pipe(less({
             paths: [path.join(__dirname, 'less', 'includes')]
         }))
-        .pipe(gulp.dest('./css'));
+        .pipe(gulp.dest('./css'))
+        .on('end', function() {
+            gutil.log(gutil.colors.yellow('♠ La tâche Less est terminée.'));
+        });
 });
 
 /*
@@ -53,11 +56,18 @@ gulp.task('styles-less', function() {
         .pipe(autoprefixer('last 2 versions'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest('dist/css/'));
+        .pipe(gulp.dest('dist/css/'))
+        .on('end', function() {
+            gutil.log(gutil.colors.yellow('♠ La tâche Style Less est terminée.'));
+        });
 });
 
-// css task
-gulp.task('styles', function() {
+/*
+ * Tâche Scss
+ * Commande : "gulp scss"
+ * Description : Compile le fichier main.scss, place ce fichier dans le répertoire css et le minifie
+ */
+gulp.task('scss', function() {
     return gulp.src('css/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
@@ -66,7 +76,7 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('css/'))
         .pipe(size())
         .on('end', function() {
-            gutil.log(gutil.colors.yellow('♠ La tâche CSS est terminée.'));
+            gutil.log(gutil.colors.yellow('♠ La tâche SCSS est terminée.'));
         });
 });
 
@@ -82,13 +92,25 @@ gulp.task('scripts', function() {
         });
 });
 
+/*
+ * Tâche watch
+ * Commande : "gulp watch"
+ * Description : Vérifie si un fichier est modifié et si c'est le cas, exécute les tâches placées dans le tableau
+ * 1er paramètre est le ou les fichier(s) à vérifier
+ * 2ème paramètre sont les tâches à executer en cas de changement
+ */
 gulp.task('watch', function() {
     gulp.watch('css/*.scss', ['styles']);
     gulp.watch('css/**/*.scss', ['styles']);
     gulp.watch('js/*.js', ['scripts']);
 });
 
-// default task
+/*
+ * Tâche Default
+ * Commande : "gulp"
+ * Description : Elle est executée lors de la command gulp
+ * Généralement, on y execute une tâche watch
+ */
 gulp.task('default', function() {
     gulp.start('watch');
 });
