@@ -13,6 +13,7 @@ var gulp = require('gulp'),
 
 var jsPaths = [
     'js/*.js',
+    'js/**/*.js',
     '!js/*.min.js'
 ];
 
@@ -80,13 +81,36 @@ gulp.task('scss', function() {
         });
 });
 
-gulp.task('scripts', function() {
+/*
+ * Tâche js
+ * Commande : "gulp js"
+ * Description : Minifie les fichiers js en conservant la structure initiale et ajoute un sufixe .min 
+ */
+gulp.task('js', function() {
     return gulp.src(jsPaths, { base: './' })
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
         .pipe(gulp.dest('./'))
+        .on('end', function() {
+            gutil.log(gutil.colors.yellow('♠ La tâche JavaScript est terminée.'));
+        });
+});
+
+/*
+ * Tâche Scripts
+ * Commande : "gulp scripts"
+ * Description : Minifie et concaténe les fichiers .js en créant un fichier main.min.js et place ce fichier dans dist/js
+ */
+gulp.task('scripts', function() {
+    return gulp.src(jsPaths)
+        .pipe(uglify())
+        .pipe(concat('main.js'))
+        .pipe(rename({
+            suffix: '.min'
+        }))
+        .pipe(gulp.dest('dist/js'))
         .on('end', function() {
             gutil.log(gutil.colors.yellow('♠ La tâche JavaScript est terminée.'));
         });
@@ -100,8 +124,7 @@ gulp.task('scripts', function() {
  * 2ème paramètre sont les tâches à executer en cas de changement
  */
 gulp.task('watch', function() {
-    gulp.watch('css/*.scss', ['styles']);
-    gulp.watch('css/**/*.scss', ['styles']);
+    gulp.watch('less/*.less', ['less']);
     gulp.watch('js/*.js', ['scripts']);
 });
 
