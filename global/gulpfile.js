@@ -32,7 +32,7 @@ var scssPaths = [
 /*
  * Tâche Less
  * Commande : "gulp less"
- * Description : compile les fichiers less en conservant la structure initiale
+ * Description : Compile les fichiers less en conservant la structure initiale
  */
 gulp.task('less', function() {
     return gulp.src(lessPaths)
@@ -42,23 +42,20 @@ gulp.task('less', function() {
         .pipe(gulp.dest('./css'));
 });
 
-
-gulp.task('styles', function() {
-    gulp.src(['src/styles/**/*.less'])
-        .pipe(plumber({
-            errorHandler: function(error) {
-                console.log(error.message);
-                this.emit('end');
-            }
-        }))
+/*
+ * Tâche Styles Less
+ * Commande : "gulp styles-less"
+ * Description : Compile les fichiers less, place les fichiers dans le répertoire dist/css et minifie le tout
+ */
+gulp.task('styles-less', function() {
+    gulp.src(lessPaths)
         .pipe(less())
         .pipe(autoprefixer('last 2 versions'))
-        .pipe(gulp.dest('dist/styles/'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest('dist/styles/'))
-        .pipe(browserSync.reload({ stream: true }))
+        .pipe(gulp.dest('dist/css/'));
 });
+
 // css task
 gulp.task('styles', function() {
     return gulp.src('css/main.scss')
