@@ -1,0 +1,31 @@
+{
+    "name": "decoboots",
+    "version": "1.0.0",
+    "description": "Theme",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BloomPhilippe/wp-decoboots.git"
+    },
+    "keywords": [
+        "wordpress"
+    ],
+    "author": "Bloom Philippe <bloom_phil@hotmail.com> (bloom_phil@hotmail.com)",
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-browserify": "*",
+        "gulp-concat": "*",
+        "gulp-filesize": "*",
+        "gulp-minify-css": "*",
+        "gulp-rename": "*",
+        "gulp-sass": "*",
+        "gulp-uglify": "*",
+        "gulp-util": "*",
+        "gulp-sourcemaps": "*",
+        "gulp-less": "*"
+    }
+}
