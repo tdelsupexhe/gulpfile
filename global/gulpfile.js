@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     size = require('gulp-filesize'),
     less = require('gulp-less'),
     path = require('path'),
-    sourcemaps = require('gulp-sourcemaps');
+    sourcemaps = require('gulp-sourcemaps'),
+    browserify = require('gulp-browserify');
 
 var jsPaths = [
     'js/*.js',
@@ -75,7 +76,6 @@ gulp.task('scss', function() {
         .pipe(rename('main.css'))
         .pipe(minifycss())
         .pipe(gulp.dest('css/'))
-        .pipe(size())
         .on('end', function() {
             gutil.log(gutil.colors.yellow('♠ La tâche SCSS est terminée.'));
         });
@@ -133,7 +133,7 @@ gulp.task('browserify', function() {
             insertGlobals: true,
             debug: !gulp.env.production
         }))
-        .pipe(gulp.dest('js/build'))
+        .pipe(gulp.dest('js/build'));
 });
 
 /*
