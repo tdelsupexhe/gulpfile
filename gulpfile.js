@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     less = require('gulp-less'),
+    gutil = require('gulp-util');
     sourcemaps = require('gulp-sourcemaps');
 
 var jsPath = [
@@ -37,8 +38,8 @@ var scssPath = [
  */
 gulp.task('css', function() {
     gulp.src(cssPath)
-        .pipe(minifyCSS())
-        .pipe(autoprefixer('last 2 version')
+        .pipe(minifycss())
+        .pipe(autoprefixer('last 2 version'))
         .pipe(concat('main.min.css'))
         .pipe(gulp.dest('dist/css'))
         .on('end', function() {
@@ -72,7 +73,7 @@ gulp.task('sass', function() {
     return gulp.src('scss/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
-        .pipe(rename('main.css'))
+        .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(gulp.dest('dist/css'))
         .on('end', function() {
