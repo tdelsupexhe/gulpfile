@@ -37,10 +37,10 @@ var scssPath = [
  */
 gulp.task('css', function() {
     gulp.src(cssPath)
-        .pipe(autoprefixer('last 2 versions'))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(minifycss())
-        .pipe(gulp.dest('dist/css/'))
+        .pipe(minifyCSS())
+        .pipe(autoprefixer('last 2 version')
+        .pipe(concat('main.min.css'))
+        .pipe(gulp.dest('dist/css'))
         .on('end', function() {
             gutil.log(gutil.colors.yellow('♠ La tâche less est terminée.'));
         });

@@ -8,7 +8,7 @@
   },
   "author": "Philippe Bloom",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "*",
     "gulp-autoprefixer": "*",
     "gulp-concat": "*",
