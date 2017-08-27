@@ -8,6 +8,14 @@
   },
   "author": "Philippe Bloom",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BloomPhilippe/gulpfile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BloomPhilippe/gulpfile/issues"
+  },
+  "homepage": "https://github.com/BloomPhilippe/gulpfile#readme",
   "devDependencies": {
     "gulp": "*",
     "gulp-autoprefixer": "*",
