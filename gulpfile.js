@@ -106,7 +106,7 @@ gulp.task('jsToMin', function() {
  * Description : Minifie et concaténe les fichiers .js en créant un fichier main.min.js et place ce fichier dans dist/js
  */
 gulp.task('js', function() {
-    return gulp.src(jsPaths)
+    return gulp.src(jsPath)
         .pipe(uglify())
         .pipe(concat('main.js'))
         .pipe(rename({
