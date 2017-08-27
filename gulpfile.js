@@ -1,3 +1,4 @@
+
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -5,105 +6,105 @@ var gulp = require('gulp'),
     minifycss = require('gulp-minify-css'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    gutil = require('gulp-util'),
-    size = require('gulp-filesize'),
     less = require('gulp-less'),
-    path = require('path'),
-    sourcemaps = require('gulp-sourcemaps'),
-    browserify = require('gulp-browserify');
+    sourcemaps = require('gulp-sourcemaps');
 
-var jsPaths = [
+var jsPath = [
     'js/*.js',
     'js/**/*.js',
     '!js/*.min.js'
 ];
 
-var cssPaths = [
+var cssPath = [
     'css/*.css'
 ];
 
-var lessPaths = [
+var lessPath = [
     'less/*.less'
 ];
 
-var scssPaths = [
+var scssPath = [
     'scss/*.scss'
 ];
 
 
+////////////////////////////////////////////////// CSS ///////////////////////////////////////////////////////////////
+
 /*
- * Tâche Less
- * Commande : "gulp less"
- * Description : Compile les fichiers less en conservant la structure initiale
+ * Tâche css
+ * Commande : "gulp css"
+ * Description : Concatene, minify, préfix les fichiers CSS
  */
-gulp.task('less', function() {
-    return gulp.src(lessPaths)
-        .pipe(less({
-            paths: [path.join(__dirname, 'less', 'includes')]
-        }))
-        .pipe(gulp.dest('./css'))
+gulp.task('css', function() {
+    gulp.src(cssPath)
+        .pipe(autoprefixer('last 2 versions'))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(minifycss())
+        .pipe(gulp.dest('dist/css/'))
         .on('end', function() {
-            gutil.log(gutil.colors.yellow('♠ La tâche Less est terminée.'));
+            gutil.log(gutil.colors.yellow('♠ La tâche less est terminée.'));
         });
 });
 
 /*
- * Tâche Styles Less
- * Commande : "gulp styles-less"
+ * Tâche less
+ * Commande : "gulp less"
  * Description : Compile les fichiers less, place les fichiers dans le répertoire dist/css et minifie le tout
  */
-gulp.task('styles-less', function() {
-    gulp.src(lessPaths)
+gulp.task('less', function() {
+    gulp.src('less/main.less')
         .pipe(less())
         .pipe(autoprefixer('last 2 versions'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
         .pipe(gulp.dest('dist/css/'))
         .on('end', function() {
-            gutil.log(gutil.colors.yellow('♠ La tâche Style Less est terminée.'));
+            gutil.log(gutil.colors.yellow('♠ La tâche less est terminée.'));
         });
 });
 
 /*
- * Tâche Scss
- * Commande : "gulp scss"
+ * Tâche sass
+ * Commande : "gulp sass"
  * Description : Compile le fichier main.scss, place ce fichier dans le répertoire css et le minifie
  */
-gulp.task('scss', function() {
-    return gulp.src('css/main.scss')
+gulp.task('sass', function() {
+    return gulp.src('scss/main.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version'))
         .pipe(rename('main.css'))
         .pipe(minifycss())
-        .pipe(gulp.dest('css/'))
+        .pipe(gulp.dest('dist/css'))
         .on('end', function() {
-            gutil.log(gutil.colors.yellow('♠ La tâche SCSS est terminée.'));
+            gutil.log(gutil.colors.yellow('♠ La tâche sass est terminée.'));
         });
 });
 
+////////////////////////////////////////////////// JS ///////////////////////////////////////////////////////////////
+
 /*
- * Tâche js
- * Commande : "gulp js"
+ * Tâche jsToMin
+ * Commande : "gulp jsToMin"
  * Description : Minifie les fichiers js en conservant la structure initiale et ajoute un sufixe .min 
  */
-gulp.task('js', function() {
-    return gulp.src(jsPaths, { base: './' })
+gulp.task('jsToMin', function() {
+    return gulp.src(jsPath, { base: './' })
         .pipe(uglify())
         .pipe(rename({
             suffix: '.min'
         }))
         .pipe(gulp.dest('./'))
         .on('end', function() {
-            gutil.log(gutil.colors.yellow('♠ La tâche JavaScript est terminée.'));
+            gutil.log(gutil.colors.yellow('♠ La tâche jsToMin est terminée.'));
         });
 });
 
 /*
- * Tâche Scripts
- * Commande : "gulp scripts"
+ * Tâche js
+ * Commande : "gulp js"
  * Description : Minifie et concaténe les fichiers .js en créant un fichier main.min.js et place ce fichier dans dist/js
  */
-gulp.task('scripts', function() {
+gulp.task('js', function() {
     return gulp.src(jsPaths)
         .pipe(uglify())
         .pipe(concat('main.js'))
@@ -116,25 +117,8 @@ gulp.task('scripts', function() {
         });
 });
 
-/*
- * Tâche Browserify
- * Commande : "gulp browserify"
- * Description : Quand vous incluez des modules dans un fichier main.js sans utiliser node comme server, 
- * vous aurez besoin de requireJS ou browserify afin que votre navigateur comprenne ces inclusions...
- * Cette tâche va interpretter ces inclusions et les traduires pour le navigateur.
- * 
- * Généralement, cette tâche est executée avant de minifier!
- *
- */
-gulp.task('browserify', function() {
-    // Single entry point to browserify
-    gulp.src('js/main.js')
-        .pipe(browserify({
-            insertGlobals: true,
-            debug: !gulp.env.production
-        }))
-        .pipe(gulp.dest('js/build'));
-});
+
+
 
 /*
  * Tâche watch
@@ -144,16 +128,22 @@ gulp.task('browserify', function() {
  * 2ème paramètre sont les tâches à executer en cas de changement
  */
 gulp.task('watch', function() {
-    gulp.watch('less/*.less', ['less']);
-    gulp.watch('js/*.js', ['scripts']);
+    gulp.watch(cssPath, ['css']);
+    gulp.watch(lessPath, ['less']);
+    gulp.watch(scssPath, ['sass']);
+    gulp.watch(jsPath, ['jsToMin', 'js']);
 });
 
 /*
  * Tâche Default
  * Commande : "gulp"
  * Description : Elle est executée lors de la command gulp
- * Généralement, on y execute une tâche watch
+ * Généralement, on y execute toutes les tâches
  */
 gulp.task('default', function() {
-    gulp.start('watch');
+    gulp.start('css');
+    gulp.start('less');
+    gulp.start('sass');
+    gulp.start('jsToMin');
+    gulp.start('js');
 });
