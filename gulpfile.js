@@ -48,6 +48,20 @@ gulp.task('css', function() {
 });
 
 /*
+ * Tâche less min
+ * Commande : "gulp less"
+ * Description : Compile les fichiers less, place les fichiers dans le répertoire dist/css et minifie le tout
+ */
+gulp.task('less-min', function() {
+    gulp.src('less/main.less')
+        .pipe(less())
+        .pipe(gulp.dest('dist/css/'))
+        .on('end', function() {
+            gutil.log(gutil.colors.yellow('♠ La tâche less est terminée.'));
+        });
+});
+
+/*
  * Tâche less
  * Commande : "gulp less"
  * Description : Compile les fichiers less, place les fichiers dans le répertoire dist/css et minifie le tout
