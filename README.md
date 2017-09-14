@@ -49,7 +49,7 @@ npm installgulp-rename --save
          |   |
          |   --- js
          |   |
-         |   --- css
+         |   --- scss
          |
          |
          - index.html
