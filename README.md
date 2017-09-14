@@ -16,6 +16,7 @@ npm install bootstrap@4.0.0-alpha.6 --save
 
 # Exemeples de structure
 
+```
 -- nom du projet 
         -
          |
@@ -30,6 +31,7 @@ npm install bootstrap@4.0.0-alpha.6 --save
          - index.html
          - gulpfile.js
          - package.json
+ ```
    
        
 # Exemeples de tâches
