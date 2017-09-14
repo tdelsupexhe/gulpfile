@@ -14,7 +14,24 @@ npm install
 npm install bootstrap@4.0.0-alpha.6 --save
 ```
 
+# Exemeples de structure
 
+-- nom du projet 
+        -
+         |
+         |
+         -src-
+         |   |
+         |   --- js
+         |   |
+         |   --- css
+         |
+         |
+         - index.html
+         - gulpfile.js
+         - package.json
+   
+       
 # Exemeples de tâches
 
 
