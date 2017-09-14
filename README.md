@@ -62,7 +62,10 @@ npm install gulp-sass --save
 npm install gulp-util --save
 ```
 ```
-npm installgulp-rename --save
+npm install gulp-rename --save
+```
+```
+npm install gulp-uglify --save
 ```
   
 # Exemeples de tâches
