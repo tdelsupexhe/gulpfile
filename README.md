@@ -14,6 +14,30 @@ npm install
 npm install bootstrap@4.0.0-alpha.6 --save
 ```
 
+# Packages de base pour SASS
+
+```
+npm install gulp --save
+```
+```
+npm install gulp-autoprefixer --save
+```
+```
+npm install gulp-concat --save
+```
+```
+npm install gulp-minify-css --save
+```
+```
+npm install gulp-sass --save
+```
+```
+npm install gulp-util --save
+```
+```
+npm installgulp-rename --save
+```
+
 # Exemeples de structure
 
 ```
