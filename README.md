@@ -14,6 +14,14 @@ npm install
 npm install bootstrap@4.0.0-alpha.6 --save
 ```
 
+
+3. Très important, afin d'utiliser les lignes de commande gulp, vous devez activer gulp et gulp-cli en global.
+
+```
+npm install --global gulp 
+npm install --global gulp-cli
+```
+
 # Packages de base pour SASS
 
 ```
