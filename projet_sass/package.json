@@ -1,0 +1,32 @@
+{
+  "name": "my-gulpfiles",
+  "version": "1.0.0",
+  "description": "Mes différents gulpfile pour SASS, LESS, JS, etc...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Philippe Bloom",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BloomPhilippe/gulpfile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BloomPhilippe/gulpfile/issues"
+  },
+  "homepage": "https://github.com/BloomPhilippe/gulpfile#readme",
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-filesize": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-less": "*"
+  }
+}

@@ -22,7 +22,7 @@ npm install --global gulp
 npm install --global gulp-cli
 ```
 
-# Exemeples de structure
+### Exemeples de structure
 
 ```
 -- nom du projet 
@@ -41,7 +41,7 @@ npm install --global gulp-cli
          - package.json
  ```
    
-# Packages de base pour SASS
+### Packages de base pour SASS
 
 ```
 npm install gulp --save
@@ -68,7 +68,7 @@ npm install gulp-rename --save
 npm install gulp-uglify --save
 ```
   
-# Exemeples de tâches
+### Exemeples de tâches
 
 
 ## Si c'est du SASS
@@ -83,11 +83,6 @@ gulp sass
 gulp less
 ```
 
-## Si c'est du CSS
-
-```
-gulp css
-```
 
 ## Liens utiles
 
