@@ -1,28 +1,8 @@
 # Gulpfile
 
-Dans le fichier Gulp, vous trouverez différentes tâches tels que LESS, JS, SASS, etc...
+## 1. Créer une structure
 
-Pour installer tout les packages qui sont écrit dans package.json
-
-```
-npm install
-```
-
-Pour installer un package en particulier et l'ajouter au package.json dans les dépendances. Le but est que lorsque vous ferez npm install, le nouveau package sera installé automatiquement.
-
-```
-npm install bootstrap@4.0.0-alpha.6 --save
-```
-
-
-Très important, afin d'utiliser les lignes de commande gulp, vous devez activer gulp et gulp-cli en global.
-
-```
-npm install --global gulp 
-npm install --global gulp-cli
-```
-
-### Exemeples de structure
+Exemple ci-dessous :
 
 ```
 -- nom du projet 
@@ -38,52 +18,79 @@ npm install --global gulp-cli
          |
          - index.html
          - gulpfile.js
-         - package.json
  ```
-   
-### Packages de base pour SASS
+ 
+## 2. Créer le fichier package.json
+
+Ce fichier permet en autre de stocker les versions des packages (modules) dont vous aurez besoin lors du développement du projet.
+Il doit se trouver au même endroit que le fichier gulfile.js
+
+Ajouter le package.json avec la commande ci-dessous
 
 ```
-npm install gulp --save
+npm init
+```
+
+## 3. Installer vos packages de developpement
+
+Les modules ci-dessous, vous permettrons de créer des tâches gulp (sass, css, js, etc...)
+
+```
+npm install gulp --save-dev
 ```
 ```
-npm install gulp-autoprefixer --save
+npm install gulp-autoprefixer --save-dev
 ```
 ```
-npm install gulp-concat --save
+npm install gulp-concat --save-dev
 ```
 ```
-npm install gulp-minify-css --save
+npm install gulp-minify-css --save-dev
 ```
 ```
-npm install gulp-sass --save
+npm install gulp-sass --save-dev
 ```
 ```
-npm install gulp-util --save
+npm install gulp-util --save-dev
 ```
 ```
-npm install gulp-rename --save
+npm install gulp-rename --save-dev
 ```
 ```
-npm install gulp-uglify --save
+npm install gulp-uglify --save-dev
 ```
   
-### Exemeples de tâches
+## 4. Construiser votre fichier gulpfile.js avec vos tâches
 
+ 
+Allez voir la documentation ci-dessous :
 
-## Si c'est du SASS
+[Gulp git](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+
+Ou analyser le fichier gulfile.js dans un des trois répertoire.
+
+## 5. Activer les commandes Gulp
+
+Très important, afin d'utiliser les lignes de commande gulp, vous devez activer gulp en global.
 
 ```
-gulp sass
-```
-
-## Si c'est du LESS
-
-```
-gulp less
+npm install --global gulp 
 ```
 
 
-## Liens utiles
+## 6. Autres commandes
 
-- [Gulp git](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+Pour installer tout les packages qui sont écrit dans package.json
+Exemple : vous installez votre projet sur une autre machine, il ne faut pas garder le dossier node_modules...
+Pour installer tous les modules (dans package.json) en une commande, il suffit d'effectuer la commande ci-dessous :
+
+```
+npm install
+```
+
+Pour installer un package en particulier et l'ajouter au package.json dans les dépendances. Le but est que lorsque vous ferez npm install, le nouveau package sera installé automatiquement.
+
+```
+npm install bootstrap@4.0.0-alpha.6 --save
+```
+
