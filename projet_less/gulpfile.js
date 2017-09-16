@@ -1,11 +1,10 @@
-
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     rename = require('gulp-rename'),
     minifycss = require('gulp-minify-css'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
+    less = require('gulp-less'),
     gutil = require('gulp-util');
 
 var jsPath = [
@@ -14,25 +13,25 @@ var jsPath = [
     '!js/*.min.js'
 ];
 
-var scssPath = [
-    'scss/*.scss'
+var lessPath = [
+    'less/*.less'
 ];
 
 
 /*
- * Tâche sass
- * Commande : "gulp sass"
- * Description : Compile le fichier main.scss, place ce fichier dans le répertoire css et le minifie
+ * Tâche less
+ * Commande : "gulp less"
+ * Description : Compile les fichiers less, place les fichiers dans le répertoire dist/css et minifie le tout
  */
-gulp.task('sass', function() {
-    return gulp.src('scss/main.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer('last 2 version'))
+gulp.task('less', function() {
+    gulp.src('less/main.less')
+        .pipe(less())
+        .pipe(autoprefixer('last 2 versions'))
         .pipe(rename({ suffix: '.min' }))
         .pipe(minifycss())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/css/'))
         .on('end', function() {
-            gutil.log(gutil.colors.blue('♠ La tâche sass est terminée.'));
+            gutil.log(gutil.colors.blue('♠ La tâche less est terminée.'));
         });
 });
 
@@ -60,9 +59,12 @@ gulp.task('js', function() {
 /*
  * Tâche watch
  * Commande : "gulp watch"
+ * Description : Vérifie si un fichier est modifié et si c'est le cas, exécute les tâches placées dans le tableau
+ * 1er paramètre est le ou les fichier(s) à vérifier
+ * 2ème paramètre sont les tâches à executer en cas de changement
  */
 gulp.task('watch', function() {
-    gulp.watch(scssPath, ['sass']);
+    gulp.watch(lessPath, ['less']);
     gulp.watch(jsPath, ['js']);
 });
 
