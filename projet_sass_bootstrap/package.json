@@ -1,7 +1,7 @@
 {
-  "name": "gulpfile LESS project",
+  "name": "gulpfile Bootstrap project",
   "version": "1.0.0",
-  "description": "gulpfile project",
+  "description": "gulpfile Bootstrap project",
   "main": "gulpfile.js",
   "devDependencies": {
     "gulp": "*",
@@ -9,13 +9,14 @@
     "gulp-concat": "*",
     "gulp-minify-css": "*",
     "gulp-rename": "*",
-    "gulp-less": "*",
+    "gulp-sass": "*",
     "gulp-uglify": "*",
-    "gulp-util": "*",
-    "gulp-order": "^1.1.1",
+    "gulp-util": "*"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
+    "bootstrap": "4.0.0-alpha.6",
+    "gulp-order": "^1.1.1",
+    "jquery": "^3.2.1",
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
