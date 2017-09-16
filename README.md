@@ -25,7 +25,7 @@ Exemple ci-dessous :
 Ce fichier permet en autre de stocker les versions des packages (modules) dont vous aurez besoin lors du développement du projet.
 Il doit se trouver au même endroit que le fichier gulfile.js
 
-Ajouter le package.json avec la commande ci-dessous
+Ajouter le package.json avec la commande ci-dessous et répondre aux questions
 
 ```
 npm init
