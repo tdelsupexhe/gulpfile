@@ -81,7 +81,7 @@ npm install --global gulp
 ## 6. Autres commandes
 
 Pour installer tout les packages qui sont écrit dans package.json
-Exemple : vous installez votre projet sur une autre machine, il ne faut pas garder le dossier node_modules...
+Si vous installez sur une autre machine ou que vous deployer votre projet, il ne faut pas garder le dossier node_modules, ni le copier/coller...
 Pour installer tous les modules (dans package.json) en une commande, il suffit d'effectuer la commande ci-dessous :
 
 ```
