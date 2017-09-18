@@ -94,3 +94,6 @@ Pour installer un package en particulier et l'ajouter au package.json dans les d
 npm install bootstrap@4.0.0-alpha.6 --save
 ```
 
+## Liens utiles
+
+- [https://stackoverflow.com/questions/43415506/how-to-make-a-refresh-in-browser-with-gulp](https://stackoverflow.com/questions/43415506/how-to-make-a-refresh-in-browser-with-gulp)
