@@ -96,7 +96,7 @@ npm install bootstrap@4.0.0-alpha.6 --save
 
 ## 7. Rafraichir le navigateur automatiquement
 
-[Brower-sync](brower-sync.md)
+[Avec Brower-sync](brower-sync.md)
 
 
 ## Liens utiles
