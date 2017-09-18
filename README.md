@@ -97,3 +97,4 @@ npm install bootstrap@4.0.0-alpha.6 --save
 ## Liens utiles
 
 - [https://stackoverflow.com/questions/43415506/how-to-make-a-refresh-in-browser-with-gulp](https://stackoverflow.com/questions/43415506/how-to-make-a-refresh-in-browser-with-gulp)
+- [https://www.sitepoint.com/livereload/](https://www.sitepoint.com/livereload/)
