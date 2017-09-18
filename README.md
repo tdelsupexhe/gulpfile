@@ -94,6 +94,11 @@ Pour installer un package en particulier et l'ajouter au package.json dans les d
 npm install bootstrap@4.0.0-alpha.6 --save
 ```
 
+## 7. rafraichir le navigateur automatiquement
+
+[Brower-sync](brower-sync.md)
+
+
 ## Liens utiles
 
 - [https://www.browsersync.io/docs/options](https://www.browsersync.io/docs/options)
